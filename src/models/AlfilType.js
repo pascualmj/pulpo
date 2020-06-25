@@ -14,6 +14,7 @@ class AlfilType {
   }
 
   runValidations(value) {
+    this.cleanErrors();
     let result = true;
     for (let validator of this.validatorChain) {
       if (!this.isSuccess(validator[0], value)) {
@@ -44,6 +45,10 @@ class AlfilType {
   errorText(customError) {
     if (isString(customError)) this.customError = customError;
     return this;
+  }
+
+  cleanErrors() {
+    this.errors = [];
   }
 }
 

@@ -24,3 +24,10 @@ test("Testing errorText() with no argument preserves the default null error text
   const valueToTest = instance.customError;
   expect(valueToTest).toBe(null);
 });
+
+test("Testing cleanErrors() results in an empty error's array attribute.", () => {
+  const instance = new AlfilType();
+  instance.errors["error"];
+  instance.cleanErrors();
+  expect(instance.errors).toEqual([]);
+});
