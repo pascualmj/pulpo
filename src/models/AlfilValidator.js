@@ -8,6 +8,7 @@ class AlfilValidator {
   }
 
   validate(obj) {
+    this.cleanResults();
     if (!AlfilValidator.isObjectEqualToSchema(obj, this.schema)) {
       this.generateValidationResults({
         isValid: false,
@@ -49,6 +50,10 @@ class AlfilValidator {
   getResults() {
     if (!Object.keys(this.validationResults).length) throw new Error(alfilError("noResults"));
     return this.validationResults;
+  }
+
+  cleanResults() {
+    this.validationResults = {};
   }
 
   static isObjectEqualToSchema(obj, schema) {

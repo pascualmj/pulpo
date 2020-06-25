@@ -21,3 +21,10 @@ test("Testing isObjectEqualToSchema() against objects with different keys return
   const valueToTest2 = { name: "john" };
   expect(AlfilValidator.isObjectEqualToSchema(valueToTest, valueToTest2)).toBeFalsy();
 });
+
+test("Testing cleanResults() and then comparing validationResults against {} returns true.", () => {
+  const instance = new AlfilValidator({});
+  instance.validationResults = { data: "some data", isValid: true };
+  instance.cleanResults();
+  expect(instance.validationResults).toEqual({});
+});
